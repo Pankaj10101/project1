@@ -1,0 +1,17 @@
+.container {
+    width: 50%;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 100px;
+  }
+
+  .result{
+    color: white;
+    border: 2px solid white;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
