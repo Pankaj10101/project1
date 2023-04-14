@@ -1,37 +1,41 @@
-import React, { useState } from 'react';
-import './Details.css';
-import Popup from './Popup';
-const Details = ({onSubmit}) => {
-  const [username, setUsername] = useState('');
-  const [age, setAge] = useState('');
+import React, { useState, useRef } from "react";
+import "./Details.css";
+import Popup from "./Popup";
+const Details = ({ onSubmit }) => {
+  const [username, setUsername] = useState("");
+  const [age, setAge] = useState("");
   const [showPopup, setShowPopup] = useState(false);
-  const [blank, isBlank] = useState(false)
+  const [blank, isBlank] = useState(false);
 
 
-  const nameUpdate = e => setUsername(e.target.value)
-  const ageUpdate = e => setAge(e.target.value)
+  const college = useRef();
+  const nameUpdate = (e) => setUsername(e.target.value);
+  const ageUpdate = (e) => setAge(e.target.value);
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username === '' || age === '' ) {
-      setShowPopup("true"); 
-      isBlank(true)
-    }else if(age<0){
+    const collegeName = college.current.value;
+    const key = Math.random()
+    if (username === "" || age === ""|| collegeName==="") {
       setShowPopup("true");
-      isBlank(false)
+      isBlank(true);
+    } else if (age < 0) {
+      setShowPopup("true");
+      isBlank(false);
     } else {
-      onSubmit({ username, age });
-      setUsername('');
-      setAge('');
-      setShowPopup(false); 
+      onSubmit({key, username, age, collegeName });
+      setUsername("");
+      setAge("");
+      setShowPopup(false);
     }
+
+    college.current.value =""
   };
 
-  const isClick = (e)=>{
-    setShowPopup(e)
-    setAge("")
-  }
+  const isClick = (e) => {
+    setShowPopup(e);
+    setAge("");
+  };
 
   return (
     <div className="login-box">
@@ -56,6 +60,17 @@ const Details = ({onSubmit}) => {
           />
           <label>Age(Years)</label>
         </div>
+        <div className="select">
+          <label>College Name</label>
+          <select className="options" ref={college}>
+          <option value="">Select</option>
+            <option >CU</option>
+            <option >LPU</option>
+            <option >GNE</option>
+            <option >SDE</option>
+          </select>
+        </div>
+
         <button type="submit" className="submit-btn">
           <span></span>
           <span></span>
@@ -65,7 +80,7 @@ const Details = ({onSubmit}) => {
         </button>
       </form>
 
-      {showPopup ? <Popup checkbtn={isClick} checkBlank = {blank} /> : null}
+      {showPopup ? <Popup checkbtn={isClick} checkBlank={blank} /> : null}
     </div>
   );
 };

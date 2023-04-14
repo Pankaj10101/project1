@@ -2,7 +2,6 @@ import React from 'react';
 import './Popup.css';
 
 const Popup = ({checkbtn, checkBlank}) => {
-    console.log(checkBlank)
     const handleOKClick = () => {
         checkbtn(false);
       };

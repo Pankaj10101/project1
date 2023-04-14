@@ -40,8 +40,7 @@
     transition: 0.5s;
   }
   
-  .user-box input:focus ~ label,
-  .user-box input:valid ~ label {
+  .user-box input:focus ~ label {
     top: -20px;
     left: 0;
     color: #03e9f4;
@@ -67,3 +66,14 @@
     background: #fff;
    color: black;
   }  
+
+  .select{
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+  }
+  .options{
+    padding: .3rem;
+    margin-top: .5rem;
+    border-radius: .5rem;
+  }

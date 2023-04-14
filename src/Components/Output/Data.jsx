@@ -7,7 +7,7 @@ const Data = (props) => {
     {
         data.map((e)=>{
             return (
-                <div className='result'>{e.name} ({e.age} Years old)</div>
+                <div className='result' key ={e.key}>{e.name} ({e.age} Years old) College Name : {e.collegeName}</div>
             )
         })
     }

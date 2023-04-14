@@ -7,8 +7,6 @@ function App() {
   const outputData = (data) => {
     setShowData((prev) => [data, ...prev]);
   }
-
-
   return (
     <div className="app">
       <Details onSubmit={outputData} />
